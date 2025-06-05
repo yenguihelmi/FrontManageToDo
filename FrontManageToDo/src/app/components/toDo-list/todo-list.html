@@ -1,0 +1,33 @@
+<!-- Boutons de filtre avec mat-button-toggle -->
+<div class="filter-controls">
+  <mat-button-toggle-group [value]="filter" (change)="applyFilter($event.value)" appearance="legacy">
+    <mat-button-toggle value="all">Toutes</mat-button-toggle>
+    <mat-button-toggle value="completed">Complétées</mat-button-toggle>
+    <mat-button-toggle value="pending">En attente</mat-button-toggle>
+  </mat-button-toggle-group>
+</div>
+
+<!-- Liste des tâches -->
+<div class="todo-list">
+  @for (todo of todos; track todo.id) {
+    <mat-card class="todo-card" [class.completed]="todo.completed">
+      <mat-card-title>{{ todo.label }}</mat-card-title>
+      
+      <mat-card-content>
+        <mat-checkbox 
+          [checked]="todo.completed" 
+          (change)="updateStatus(todo.id, $event.checked)">
+          {{ todo.completed ? 'Complétée' : 'En attente' }}
+        </mat-checkbox>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-raised-button color="primary" [routerLink]="['/todos', todo.id]">
+          Voir détails
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  } @empty {
+    <p>Aucune tâche trouvée</p>
+  }
+</div>

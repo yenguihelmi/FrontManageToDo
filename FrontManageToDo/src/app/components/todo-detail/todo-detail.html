@@ -1,0 +1,17 @@
+@if (todo) {
+  <mat-card class="todo-detail" [class.completed]="todo.completed">
+    <mat-card-header>
+      <mat-card-title>{{ todo.label }}</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <p>{{ todo.description }}</p>
+
+      <mat-checkbox 
+        [checked]="todo.completed" 
+        (change)="updateStatus($event.checked)">
+        {{ todo.completed ? 'Complétée' : 'En attente' }}
+      </mat-checkbox>
+    </mat-card-content>
+  </mat-card>
+}

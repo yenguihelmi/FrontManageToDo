@@ -1,0 +1,10 @@
+.todo-detail.completed {
+  background-color: #e8f5e9; /* vert pâle */
+  border-left: 5px solid #4caf50;
+  transition: all 0.3s ease;
+}
+
+mat-card.todo-detail {
+  margin: 20px 0;
+  padding: 16px;
+}
